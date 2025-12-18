@@ -38,9 +38,7 @@ class WBWebViewContainerController: UIViewController, WKNavigationDelegate, WKUI
             return self.webViewController.webView
         }
     }
-    public var publicWebView: WKWebView? {
-        return self.webView
-    }
+    
     // If the pop up picker is showing, then the
     // following two vars are not null.
     @objc var pickerIsShowing = false
@@ -190,9 +188,5 @@ class WBWebViewContainerController: UIViewController, WKNavigationDelegate, WKUI
             return
         }
         self.performSegue(withIdentifier: "nav-error-segue", sender: error)
-    }
-    func loadURL(_ url: URL) {
-        let request = URLRequest(url: url)
-        self.webViewController.webView.load(request)
     }
 }

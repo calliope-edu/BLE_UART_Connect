@@ -218,14 +218,15 @@ class ViewController: UIViewController, UITextFieldDelegate, WKNavigationDelegat
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
-        let nc = self.navigationController
-
+        let nc = self.navigationController as! NavigationViewController
+        nc.addObserver(self, forKeyPath: "navBarIsHidden", options: [.initial, .new], context: nil)
         if self.shouldShowBars {
             self.showBars()
         }
     }
     override func viewWillDisappear(_ animated: Bool) {
-        let nc = self.navigationController
+        let nc = self.navigationController as! NavigationViewController
+        nc.removeObserver(self, forKeyPath: "navBarIsHidden")
         super.viewWillDisappear(animated)
     }
     
